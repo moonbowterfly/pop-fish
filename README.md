@@ -1,6 +1,6 @@
 # Pop-Fish
 
-**Zotero 里的期刊情报站。** 为文库中的每篇文献补上期刊指标与投稿风险信号，并直接显示在条目列表里。
+**Zotero 里的期刊情报站。** 中文社区里也常叫它「**泡泡鱼**」（Pop-Fish）。为文库中的每篇文献补上期刊指标与投稿风险信号，并直接显示在条目列表里。
 
 > **Pop-Fish** is a Zotero plugin that shows the latest impact factor (JIF), 5-year JIF, JCR quartile, CAS division, and early-warning / predatory-journal flags directly in your item list.
 
