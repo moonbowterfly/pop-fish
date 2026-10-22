@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Pop-Fish",
+  "version": "0.2.1",
+  "description": "在 Zotero 条目列表直接显示期刊影响因子、五年影响因子、JCR 分区与中科院分区，并对命中中科院预警名单或掠夺性期刊名单的期刊标红提示。",
+  "homepage_url": "https://github.com/moonbowterfly/pop-fish",
+  "author": "Pop-Fish",
+  "icons": {
+    "48": "chrome/content/icons/favicon@0.5x.png",
+    "96": "chrome/content/icons/favicon.png"
+  },
+  "applications": {
+    "zotero": {
+      "id": "popfish@moonbow.dev",
+      "strict_min_version": "7.999",
+      "strict_max_version": "10.0.*",
+      "update_url": "https://github.com/moonbowterfly/pop-fish/releases/download/release/update.json"
+    }
+  }
+}

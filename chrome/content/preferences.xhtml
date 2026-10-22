@@ -1,0 +1,73 @@
+<vbox id="popfish-prefpane" data-popfish-pane="1" onload="PopFish_Preferences.init()">
+	<html:link rel="localization" href="popfish-addon.ftl"/>
+	<vbox class="main-section">
+		<label><html:h2>Pop-Fish · 期刊数据</html:h2></label>
+		<description>
+			为文库中的每篇文献补上期刊指标与投稿风险信号：最新影响因子、五年影响因子、JCR 分区、中科院分区，以及中科院国际期刊预警名单与掠夺性期刊名单的命中情况。
+		</description>
+
+		<groupbox>
+			<label><html:h3>数据源</html:h3></label>
+			<description>
+			期刊数据来自文献泡泡（byteslink.cn）的开放接口。API Key 在网站「用户中心 → 我的 API」生成，明文只显示一次；重新生成会让旧 Key 立即失效。
+			</description>
+			<hbox align="center" style="margin-top: 8px;">
+				<label value="API Key：" control="bf-api-key"/>
+				<html:input type="password" id="bf-api-key" style="width: 300px;"/>
+				<html:button id="bf-toggle-key" style="margin-left: 6px;">显示</html:button>
+				<html:button id="bf-save-key" style="margin-left: 6px;">保存</html:button>
+				<html:button id="bf-clear-key" style="margin-left: 6px;">清除 Key</html:button>
+				<html:button id="bf-test" style="margin-left: 6px;">测试连接</html:button>
+			</hbox>
+			<description>「测试连接」会立即向接口发送 1 个刊名，消耗 1 次请求；按钮在请求完成前会禁用，避免连点。</description>
+			<description id="bf-status" style="margin-top: 6px;">尚未测试。</description>
+			<description>连接通过不等于已经查询文库。首次使用请点击下方按钮，按当前列表（含分类/搜索过滤）去重查询；不会自动扩大到整个文库。</description>
+			<html:button id="bf-fill-current" style="margin-top: 6px;">填充当前列表（先确认费用）</html:button>
+		</groupbox>
+
+		<groupbox>
+			<label><html:h3>条目列表列</html:h3></label>
+			<description>
+				勾选后列会出现在条目列表的列选择器里（表头右键 → 选择列），可以按需显示、排序、调整宽度。
+			</description>
+			<description>显示「待查询」时请先填充当前列表；「无期刊名」需补齐条目刊名；「—」表示未收录/名称未匹配或该指标缺失。</description>
+			<checkbox id="bf-col-if" label="影响因子（JIF）"/>
+			<checkbox id="bf-col-jcr" label="JCR 分区（Q1–Q4）"/>
+			<checkbox id="bf-col-cas" label="中科院分区（1–4 区）"/>
+			<checkbox id="bf-col-warning" label="期刊预警（命中预警 / 掠夺性名单时标红）"/>
+		</groupbox>
+
+		<groupbox>
+			<label><html:h3>更新行为</html:h3></label>
+			<checkbox id="bf-lazy" label="浏览条目列表时自动补全缺失的期刊数据（默认关闭，开启会产生费用）"/>
+			<hbox align="center" style="margin-top: 6px;">
+				<label value="每会话自动查询上限：" control="bf-budget"/>
+				<html:input type="number" id="bf-budget" min="0" max="400" step="1" style="width: 90px;"/>
+				<label value="个期刊（0–400，仅限制自动查询；手动更新会先确认）"/>
+			</hbox>
+			<checkbox id="bf-extra" label="更新时把结果写入条目的「其他（Extra）」字段"/>
+			<hbox align="center" style="margin-top: 6px;">
+				<label value="缓存有效期：" control="bf-ttl"/>
+				<html:input type="number" id="bf-ttl" min="1" max="3650" step="1" style="width: 90px;"/>
+				<label value="天"/>
+			</hbox>
+			<hbox align="center">
+				<label value="Extra 标签：" control="bf-tag"/>
+				<html:input type="text" id="bf-tag" style="width: 160px;"/>
+			</hbox>
+		</groupbox>
+
+		<groupbox>
+			<label><html:h3>本地缓存与额度</html:h3></label>
+			<description id="bf-cache-info">读取中…</description>
+			<hbox style="margin-top: 8px;">
+				<html:button id="bf-clear">清除缓存</html:button>
+				<html:button id="bf-recheck" style="margin-left: 8px;">重新检查当前分类</html:button>
+			</hbox>
+		</groupbox>
+
+		<description style="margin-top: 12px;">
+			说明：指标与名单均为公开数据整理，仅供科研参考，不构成投稿决策的唯一依据。数据版权归原发布方所有；接口调用按请求计费，插件会优先使用本地缓存以减少消耗。
+		</description>
+	</vbox>
+</vbox>

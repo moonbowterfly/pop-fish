@@ -1,0 +1,15 @@
+# 构建产物
+dist/
+
+# 开发与验证过程文件（不入库）
+docs/
+tests/
+tools/
+DEVELOPMENT.md
+
+# Python / 编辑器
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store
